@@ -135,16 +135,19 @@ def fixture_up(
         hasura_secret=hasura_secret,
         delete_db=delete_db,
     )
+    network_name = cluster_name + "_default"
+    master_name = cluster_name + "_determined-master_1"
     for agent_number in range(num_agents):
         agent_name = cluster_name + f"-agent-{agent_number}"
         labels = {"determined.cluster": cluster_name}
         agent_up(
-            master_host="localhost",
+            master_host=master_name,
             master_port=port,
             agent_name=agent_name,
             version=version,
             labels=labels,
             no_gpu=no_gpu,
+            network=network_name,
         )
 
 
@@ -165,6 +168,7 @@ def agent_up(
     version: Optional[str],
     no_gpu: bool,
     labels: Dict = None,
+    network: str = "host"
 ) -> None:
     if version is None:
         version = determined_deploy.__version__
@@ -194,7 +198,7 @@ def agent_up(
         init=init,
         mounts=mounts,
         volumes=volumes,
-        network="host",
+        network=network,
         name=agent_name,
         detach=True,
         runtime=runtime,
