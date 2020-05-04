@@ -33,8 +33,9 @@ def get_transform():
     return Compose(transforms)
 
 
-def draw_example(image, labels):
+def draw_example(image, labels, title=None):
     fig,ax = plt.subplots(1)
+    plt.title(title)
     ax.imshow(image)
     boxes = labels['boxes'].numpy()
     boxes = np.vsplit(boxes, boxes.shape[0])

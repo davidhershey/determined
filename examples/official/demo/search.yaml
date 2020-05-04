@@ -7,7 +7,7 @@ hyperparameters:
   global_batch_size: 2
   learning_rate:
     base: 10
-    maxval: -1
+    maxval: -2
     minval: -4
     type: log
   momentum:
