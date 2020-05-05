@@ -4,14 +4,13 @@ data:
 description: distributed_training
 entrypoint: model_def:ObjectDetectionTrial
 hyperparameters:
-  global_batch_size: 16
-  learning_rate: 0.005
+  global_batch_size: 32
+  learning_rate: 0.08
   momentum: 0.9
   weight_decay: 0.0005
-max_restarts: 1
 min_validation_period: 1
 resources:
-  slots_per_trial: 8
+  slots_per_trial: 16
 searcher:
   max_steps: 20
   metric: val_avg_iou

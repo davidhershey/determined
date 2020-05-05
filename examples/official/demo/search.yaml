@@ -15,12 +15,11 @@ hyperparameters:
     minval: 0.7
     type: double
   weight_decay: 0.0005
-max_restarts: 1
 min_validation_period: 1
 resources:
   slots_per_trial: 1
 searcher:
-  max_steps: 40
+  max_steps: 20
   max_trials: 24
   metric: val_avg_iou
   name: adaptive_simple

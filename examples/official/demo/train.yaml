@@ -8,7 +8,6 @@ hyperparameters:
   learning_rate: 0.005
   momentum: 0.9
   weight_decay: 0.0005
-max_restarts: 1
 min_validation_period: 1
 searcher:
   max_steps: 20

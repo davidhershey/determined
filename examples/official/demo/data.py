@@ -33,6 +33,12 @@ def get_transform():
     return Compose(transforms)
 
 
+def load_and_transform_image(img_path):
+    image = Image.open(img_path).convert("RGB")
+    image = get_transform()(image)
+    return image
+
+
 def draw_example(image, labels, title=None):
     fig,ax = plt.subplots(1)
     plt.title(title)
@@ -47,6 +53,7 @@ def draw_example(image, labels, title=None):
         rect = patches.Rectangle((bottom,left),width,height,linewidth=2,edgecolor='r',facecolor='none')
         # # Add the patch to the Axes
         ax.add_patch(rect)
+    plt.axis('off')
     plt.show()
 
 
